@@ -1,0 +1,12 @@
+<mat-toolbar>Usuario: {{nombre}}</mat-toolbar>
+
+<mat-table [dataSource]= "perfiles" matTable>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <ng-container class="example-header" matColumnDef="perfil">
+        <mat-header-cell *matHeaderCellDef > Perfiles </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row}} </mat-cell>
+      </ng-container>      
+
+</mat-table>

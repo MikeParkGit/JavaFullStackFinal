@@ -1,0 +1,41 @@
+<mat-card>Ingrese los datos del paciente</mat-card>
+
+<form class="example-container" [formGroup]="form" #frmPaciente="ngForm" (ngSubmit)="ejecutar()">
+    <div hidden="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id"> 
+        </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombres" minlength="5" required formControlName="nombres">
+        <small *ngIf="fun.nombres.errors?.required" class="invalido">Nombre es requerido</small>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Apellidos" minlength="5" required formControlName="apellidos">
+        <small *ngIf="fun.apellidos.errors?.required && fun.apellidos.touched" class="invalido">Apellidos es requerido</small>
+        <small *ngIf="fun.apellidos.errors?.minlength" class="invalido">Apellidos debe tener 5 caracteres mínimo</small>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="DNI"formControlName="dni" minlength="8" required type="number" >
+        <small *ngIf="fun.dni.errors?.required" class="invalido">DNI es requerido</small>
+        <small *ngIf="fun.dni.errors?.minlength" class="invalido">DNI debe tener 8 caracteres</small>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Celular" required minlength="9" formControlName="telefono" type="number">
+        <small *ngIf="fun.telefono.errors?.minlength" class="invalido">Telefono debe tener 9 caracteres</small>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Dirección" required formControlName="direccion">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Correo" required formControlName="correo">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmPaciente.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/paciente' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+</form>
